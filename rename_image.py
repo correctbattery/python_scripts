@@ -12,7 +12,7 @@ path = os.getcwd()
 
 """
 For every file in the current directory,
-get the Time the photo got shot from the metadata.
+get the time the photo got shot from the metadata.
 You take the date and time and rename every file in the folder starting with the date and time.
 """
 
@@ -22,6 +22,7 @@ def bycanon(metadata):
     # Metadata must be loaded here
     text = 'Canon'
     # load type of camera
+    # I have a Canon so I need a function that tells me if the picture is taken by a Canon camera.
     camera = metadata['Exif.Image.Make']
     if text == camera.value:
         return True
@@ -49,7 +50,7 @@ def finde_bindestrich(filename_old, string_datetime):
 
 for file in os.listdir(path):
     if file != cur_file_name:
-        # When there's not metadata, go to the next file.
+        # When there's no metadata, go to the next file.
         try:
             metadata = ex.ImageMetadata(file)
             metadata.read()
